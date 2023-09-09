@@ -1,5 +1,13 @@
-
+https://github.com/m3lfx/android_lec2023
  super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toast.makeText(this, "In onCreate", Toast.LENGTH_SHORT).show();
         Log.i("info", "In onCreate");
+
+        @Override
+    public void onStart() {
+// First call the "official" version of this method
+        super.onStart();
+        Toast.makeText(this, "In onStart", Toast.LENGTH_SHORT).show();
+        Log.i("info", "In onStart");
+    }
