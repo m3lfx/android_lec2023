@@ -595,3 +595,11 @@ public class MyDialog extends DialogFragment {
  <string name="rb_fast">Fast</string>
  <string name="rb_slow">Slow</string>
  <string name="rb_none">None</string>
+
+ public class Note {
+ private String mTitle;
+ private String mDescription;
+ private boolean mIdea;
+ private boolean mTodo;
+ private boolean mImportant;
+}
