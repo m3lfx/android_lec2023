@@ -175,3 +175,85 @@ https://github.com/m3lfx/android_lec2023
             }
         });
     }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btnAdd = (Button) findViewById(R.id.btnAdd);
+        btnTake = (Button) findViewById(R.id.btnTake);
+        txtValue = (TextView) findViewById(R.id.txtValue);
+        btnGrow = (Button) findViewById(R.id.btnGrow);
+        btnShrink = (Button) findViewById(R.id.btnShrink);
+        btnReset = (Button) findViewById(R.id.btnReset);
+        btnHide = (Button) findViewById(R.id.btnHide);
+
+        btnAdd.setOnClickListener(this);
+        btnTake.setOnClickListener(this);
+        txtValue.setOnClickListener(this);
+        btnGrow.setOnClickListener(this);
+        btnShrink.setOnClickListener(this);
+        btnReset.setOnClickListener(this);
+        btnHide.setOnClickListener(this);
+
+        Log.i("info", "Done creating the app");
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+    }
+
+    @Override
+
+    public void onClick(View view) {
+        float size;
+        switch(view.getId()){
+            case R.id.btnAdd:
+                value ++;
+                txtValue.setText(""+ value);
+                break;
+            case R.id.btnTake:
+                value--;
+                txtValue.setText(""+ value);
+                break;
+            case R.id.btnReset:
+                value = 0;
+                txtValue.setText(""+ value);
+                break;
+            case R.id.btnGrow:
+                size = txtValue.getTextScaleX();
+                txtValue.setTextScaleX(size + 1);
+                break;
+            case R.id.btnShrink:
+                size = txtValue.getTextScaleX();
+                txtValue.setTextScaleX(size - 1);
+                break;
+            case R.id.btnHide:
+                if(txtValue.getVisibility() == View.VISIBLE)
+                {
+// Currently visible so hide it
+                    txtValue.setVisibility(View.INVISIBLE);
+// Change text on the button
+                    btnHide.setText("SHOW");
+                }else{
+// Currently hidden so show it
+                    txtValue.setVisibility(View.VISIBLE);
+// Change text on the button
+                    btnHide.setText("HIDE");
+                }
+                break;
+
+        }
+
+    }
