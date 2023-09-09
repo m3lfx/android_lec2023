@@ -867,3 +867,8 @@ dialogshownote
 
 mainactivity
     Note mTempNote = new Note();
+
+    public void createNewNote(Note n){
+ // Temporary code
+ mTempNote = n;
+}
