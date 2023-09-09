@@ -872,3 +872,19 @@ mainactivity
  // Temporary code
  mTempNote = n;
 }
+
+dialogshownote
+Button button = (Button) findViewById(R.id.button);
+button.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View v) {
+ // Create a new DialogShowNote called dialog
+ DialogShowNote dialog = new DialogShowNote();
+ 
+ // Send the note via the sendNoteSelected method
+ dialog.sendNoteSelected(mTempNote);
+ 
+ // Create the dialog
+ dialog.show(getFragmentManager(), "123");
+ }
+});
