@@ -267,3 +267,260 @@ https://github.com/m3lfx/android_lec2023
     private Button btnShrink;
     private Button btnReset;
     private Button btnHide;s
+
+
+exploration_layout.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".33">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/radioGroup">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Beijing"
+                android:id="@+id/radioButtonBeijing"
+                android:checked="false" />
+
+            <RadioButton
+                android:id="@+id/radioButtonLondon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="London" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New York"
+                android:id="@+id/radioButtonNewYork"
+                android:checked="false" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button"
+                android:layout_gravity="center_horizontal" />
+
+            <TextClock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textClock"
+                android:layout_gravity="center_horizontal" />
+
+        </RadioGroup>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".33"
+        android:id="@+id/relativeLayout3">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transparency"
+            android:id="@+id/checkBoxTransparency"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tint"
+            android:id="@+id/checkBoxTint"
+            android:layout_below="@+id/checkBoxTransparency"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Re-size"
+            android:id="@+id/checkBoxReSize"
+            android:layout_below="@+id/checkBoxTint"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_below="@+id/checkBoxReSize"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="53dp"
+            android:src="@mipmap/ic_launcher" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".33">
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Switch"
+            android:id="@+id/switch1"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="37dp"
+            android:checked="false"
+            android:enabled="true"
+            android:clickable="true" />
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/switch1"
+            android:layout_marginTop="5dp" />
+    </RelativeLayout>
+    
+</LinearLayout>
+
+@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.exploration_layout);
+        // Get a reference to all our widgets
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        RadioButton rbBeijing = (RadioButton) findViewById(R.id.radioButtonBeijing);
+        RadioButton rbLondon = (RadioButton) findViewById
+                (R.id.radioButtonLondon);
+        RadioButton rbnewYork = (RadioButton) findViewById
+                (R.id.radioButtonNewYork);
+        final EditText editText = (EditText) findViewById(R.id.editText);
+        final Button button = (Button) findViewById(R.id.button);
+        final TextClock tClock = (TextClock) findViewById(R.id.textClock);
+        final CheckBox cbTransparency = (CheckBox) findViewById
+                (R.id.checkBoxTransparency);
+        final CheckBox cbTint = (CheckBox) findViewById(R.id.checkBoxTint);
+        final CheckBox cbReSize = (CheckBox) findViewById
+                (R.id.checkBoxReSize);
+        final ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        Switch switch1 = (Switch) findViewById(R.id.switch1);
+        final WebView webView = (WebView) findViewById(R.id.webView);
+
+        cbTransparency.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+
+                if(cbTransparency.isChecked()){
+// Set some transparency
+                    imageView.setAlpha(.1f);
+                }else{
+                    imageView.setAlpha(1f);
+                }
+            }
+        });
+        cbTint.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (cbTint.isChecked()) {
+                    // Checked so set some tint
+                    imageView.setColorFilter(Color.argb(150, 255, 0, 0));
+                } else {
+                    // No tint required
+                    imageView.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+
+            }
+        });
+
+        cbReSize.setOnCheckedChangeListener
+                (new CompoundButton.OnCheckedChangeListener() {
+                    public void onCheckedChanged(CompoundButton buttonView,
+                                                 boolean isChecked) {
+                        if (cbReSize.isChecked()) {
+// It's checked so make bigger
+                            imageView.setScaleX(2);
+                            imageView.setScaleY(2);
+                        } else {
+// It's not checked make regular size
+                            imageView.setScaleX(1);
+                            imageView.setScaleY(1);
+                        }
+                    }
+                });
+
+// Now for the radio buttons
+// Uncheck all buttons
+        radioGroup.clearCheck();
+        radioGroup.setOnCheckedChangeListener(new RadioGroup. OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton rb = (RadioButton) group.findViewById
+                        (checkedId);
+                switch (rb.getId()) {
+                    case R.id.radioButtonLondon:
+                        tClock.setTimeZone("Europe/London");
+                        break;
+                    case R.id.radioButtonBeijing:
+                        tClock.setTimeZone("CST6CDT");
+                        break;
+                    case R.id.radioButtonNewYork:
+                        tClock.setTimeZone("America/New_York");
+                        break;
+                }// End switch block
+            }
+        });
+/*
+Let's listen for clicks on our regular Button.
+We can do this with an anonymous class as well.
+*/
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+// We only handle one button
+// So no switching required
+                button.setText(editText.getText());
+            }
+        });
+// Make the webview display a page
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("https://google.com");
+        webView.setVisibility(View.INVISIBLE);
+        switch1.setOnCheckedChangeListener(new CompoundButton. OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    webView.setVisibility(View.VISIBLE);
+                }else{
+                    webView.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+
+      
+
+       
+
+    }
