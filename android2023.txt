@@ -137,3 +137,41 @@ https://github.com/m3lfx/android_lec2023
 
 
 </RelativeLayout>
+
+@Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btnAdd = (Button) findViewById(R.id.btnAdd);
+        btnTake = (Button) findViewById(R.id.btnTake);
+        txtValue = (TextView) findViewById(R.id.txtValue);
+        btnGrow = (Button) findViewById(R.id.btnGrow);
+        btnShrink = (Button) findViewById(R.id.btnShrink);
+        btnReset = (Button) findViewById(R.id.btnReset);
+        btnHide = (Button) findViewById(R.id.btnHide);
+
+        btnAdd.setOnClickListener(this);
+        btnTake.setOnClickListener(this);
+        txtValue.setOnClickListener(this);
+        btnGrow.setOnClickListener(this);
+        btnShrink.setOnClickListener(this);
+        btnReset.setOnClickListener(this);
+        btnHide.setOnClickListener(this);
+
+        Log.i("info", "Done creating the app");
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+    }
