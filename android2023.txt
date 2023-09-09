@@ -519,6 +519,60 @@ We can do this with an anonymous class as well.
         });
 
 
+myDialog
+public class MyDialog extends DialogFragment {
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        // Use the Builder class because this dialog has a simple UI
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        // Dialog will have "Choose" as the title
+        builder.setMessage("Choose")
+
+                // An OK button that does nothing
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Nothing happening here
+                    }
+                })
+                // A "Cancel" button that does nothing
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+// Nothing happening here either
+                    }
+                });
+// Create the object and return it
+        return builder.create();
+    }// End onCreateDialog
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // We only handle one button
+                // So no switching required
+                MyDialog myDialog = new MyDialog();
+                myDialog.show(getFragmentManager(), "123");
+            }
+        });
+       
+
+<Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="55dp"
+        android:id="@+id/button" />
+
+        
+    }
+
+
       
 
        
