@@ -257,3 +257,13 @@ https://github.com/m3lfx/android_lec2023
         }
 
     }
+
+    private int value = 0;
+    // A bunch of Buttons and a TextView
+    private Button btnAdd;
+    private Button btnTake;
+    private TextView txtValue;
+    private Button btnGrow;
+    private Button btnShrink;
+    private Button btnReset;
+    private Button btnHide;s
